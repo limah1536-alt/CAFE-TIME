@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAFE TIME - Detail & Pesan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">☕ CAFE TIME</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Beranda</a></li>
+                <li><a href="katalog.html" class="nav-link">Katalog</a></li>
+                <li><a href="detail.html" class="nav-link active">Detail</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Detail Menu & Pemesanan</h1>
+        
+        <!-- Gallery & Detail -->
+        <div class="detail-container">
+            <div class="gallery">
+                <div class="main-image">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600" alt="Cappuccino" id="mainImage">
+                </div>
+                <div class="thumbnail-grid">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=150" alt="Thumb 1" class="thumbnail active" onclick="changeImage(this.src)">
+                    <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=150" alt="Thumb 2" class="thumbnail" onclick="changeImage(this.src)">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefda?w=150" alt="Thumb 3" class="thumbnail" onclick="changeImage(this.src)">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=150" alt="Thumb 4" class="thumbnail" onclick="changeImage(this.src)">
+                </div>
+            </div>
+            
+            <div class="product-specs">
+                <h2>Cappuccino Special</h2>
+                <p class="product-category">Kategori: Minuman</p>
+                <p class="product-price">Rp 35.000</p>
+                <div class="spec-list">
+                    <h3>Spesifikasi:</h3>
+                    <ul>
+                        <li>☕ Jenis: Kopi Espresso</li>
+                        <li>🥛 Susu: Fresh Milk Foam</li>
+                        <li>📏 Ukuran: Regular (250ml)</li>
+                        <li>🌡️ Suhu: Panas / Dingin</li>
+                        <li>⭐ Rating: 4.8/5.0</li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary" onclick="scrollToForm()">Pesan Sekarang</button>
+            </div>
+        </div>
+
+        <!-- Order Form -->
+        <div class="order-form-section" id="orderForm">
+            <h2>Form Pemesanan</h2>
+            <form id="bookingForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap *</label>
+                    <input type="text" id="name" name="name" required placeholder="Masukkan nama Anda">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="contoh@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="model">Menu Pilihan *</label>
+                    <select id="model" name="model" required>
+                        <option value="">Pilih Menu</option>
+                        <option value="Cappuccino Special">Cappuccino Special - Rp 35.000</option>
+                        <option value="Chocolate Donut">Chocolate Donut - Rp 25.000</option>
+                        <option value="Grilled Salmon">Grilled Salmon - Rp 85.000</option>
+                        <option value="Matcha Latte">Matcha Latte - Rp 40.000</option>
+                        <option value="Croissant">Croissant - Rp 28.000</option>
+                        <option value="Burger Classic">Burger Classic - Rp 55.000</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Tanggal Pesan *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Kirim Pesanan</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 CAFE TIME. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Gallery image changer
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+            
+            // Update active thumbnail
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        // Scroll to form
+        function scrollToForm() {
+            document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Basic validation
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const model = document.getElementById('model').value;
+            const date = document.getElementById('date').value;
+            
+            if (!name || !email || !model || !date) {
+                alert('Mohon lengkapi semua field yang wajib diisi!');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Mohon masukkan alamat email yang valid!');
+                return;
+            }
+            
+            // Date validation - must be today or future
+            const selectedDate = new Date(date);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            if (selectedDate < today) {
+                alert('Tanggal pemesanan tidak boleh di masa lalu!');
+                return;
+            }
+            
+            // Success
+            alert(`✅ Pesanan Berhasil!\n\nTerima kasih ${name}!\nPesanan Anda untuk "${model}" pada tanggal ${date} telah kami terima.\n\nKami akan menghubungi Anda melalui email: ${email}`);
+            
+            // Reset form
+            document.getElementById('bookingForm').reset();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

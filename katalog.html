@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAFE TIME - Katalog Menu</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">☕ CAFE TIME</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Beranda</a></li>
+                <li><a href="katalog.html" class="nav-link active">Katalog</a></li>
+                <li><a href="detail.html" class="nav-link">Detail</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h1 class="page-title">Katalog Menu</h1>
+        
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-group">
+                <label for="filter-brand">Kategori:</label>
+                <select id="filter-brand" class="filter-select">
+                    <option value="semua">Semua Kategori</option>
+                    <option value="minuman">Minuman</option>
+                    <option value="makanan">Makanan</option>
+                    <option value="snack">Snack</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="filter-price">Harga:</label>
+                <select id="filter-price" class="filter-select">
+                    <option value="semua">Semua Harga</option>
+                    <option value="murah">Di bawah Rp 30.000</option>
+                    <option value="sedang">Rp 30.000 - Rp 50.000</option>
+                    <option value="mahal">Di atas Rp 50.000</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="productGrid">
+            <!-- Products will be rendered by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 CAFE TIME. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+    <script src="js/katalog.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
